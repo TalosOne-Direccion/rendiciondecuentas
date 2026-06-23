@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rendición de Cuentas · Proyectos · Grupo Prosur</title>
+<style>
+  :root{
+    --bg:        #f4f6fb;
+    --panel:     #ffffff;
+    --ink:       #1b2333;
+    --ink-soft:  #5a6478;
+    --line:      #e6e9f2;
+    --line-soft: #eef1f7;
+    --brand:     #e1251b;
+    --gray:      #6d6e71;
+    --shadow:    0 1px 2px rgba(20,30,60,.06), 0 10px 28px rgba(20,30,60,.07);
+
+    /* Colores por empresa */
+    --c-prosur:  #e1251b;
+    --c-chesa:   #0891b2;
+    --c-calza:   #be185d;
+    --c-pinos:   #15803d;
+    --c-cafi:    #c2410c;
+
+    /* Colores por etapa */
+    --s-plan:  #64748b;
+    --s-prog:  #2563eb;
+    --s-rev:   #d97706;
+    --s-done:  #16a34a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;
+  }
+
+  /* ============ FONDO ANIMADO (marca de agua del logo) ============ */
+  .bg-anim{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .bg-anim img{position:absolute;mix-blend-mode:multiply;opacity:.10;will-change:transform}
+  .b1{width:240px;top:8%;  left:4%;  animation:float1 26s ease-in-out infinite}
+  .b2{width:150px;top:24%; left:72%; animation:float2 32s ease-in-out infinite}
+  .b3{width:190px;top:62%; left:14%; animation:float3 30s ease-in-out infinite}
+  .b4{width:130px;top:78%; left:60%; animation:float1 28s ease-in-out infinite reverse}
+  .b5{width:210px;top:46%; left:46%; animation:float2 36s ease-in-out infinite}
+  .b6{width:120px;top:6%;  left:50%; animation:float3 24s ease-in-out infinite}
+  .b7{width:160px;top:88%; left:30%; animation:float1 34s ease-in-out infinite}
+  @keyframes float1{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(26px,-34px) rotate(7deg)}}
+  @keyframes float2{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(-30px,28px) rotate(-6deg)}}
+  @keyframes float3{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(20px,30px) rotate(5deg)}}
+  @media(prefers-reduced-motion:reduce){.bg-anim img{animation:none}}
+
+  header.top, .exec-wrap, .wrap, footer.foot{position:relative;z-index:1}
+
+  /* ============ HEADER ============ */
+  header.top{
+    background:linear-gradient(125deg,#e42a1d 0%,#cf1f1c 52%,#a8181a 100%);
+    color:#fff;padding:18px 26px 22px;box-shadow:0 6px 22px rgba(168,24,26,.25)}
+  .top-row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    max-width:1280px;margin:0 auto}
+  .brand-left{display:flex;align-items:center;gap:18px}
+  .logo-chip{background:#fff;border-radius:12px;padding:8px 12px;display:flex;align-items:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.12)}
+  .logo-chip img{height:42px;display:block}
+  .brand-block h1{margin:0;font-size:20px;letter-spacing:-.3px}
+  .brand-block p{margin:4px 0 0;font-size:13px;color:#ffd9d4}
+  .updated{font-size:12px;color:#ffd9d4;text-align:right;line-height:1.5}
+  .updated b{color:#fff;font-size:13px}
+
+  /* ============ RESUMEN EJECUTIVO ============ */
+  .exec-wrap{max-width:1280px;margin:0 auto;padding:0 26px}
+  .exec{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);
+    margin-top:-14px;padding:20px 22px}
+  .exec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}
+  .exec-head h2{margin:0;font-size:16px;letter-spacing:-.2px;display:flex;align-items:center;gap:9px}
+  .exec-head h2 .pin{width:7px;height:18px;background:var(--brand);border-radius:3px;display:inline-block}
+  .exec-head .asof{font-size:12px;color:var(--ink-soft)}
+
+  .exec-grid{display:grid;grid-template-columns:1.1fr 1.4fr 1.5fr;gap:18px}
+  .ex-card{border:1px solid var(--line-soft);border-radius:14px;padding:15px 16px;background:#fcfdff}
+  .ex-card h4{margin:0 0 12px;font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-soft)}
+
+  /* KPI total + por empresa */
+  .kpi-total{display:flex;align-items:baseline;gap:8px}
+  .kpi-total .big{font-size:42px;font-weight:800;line-height:1;color:var(--brand)}
+  .kpi-total .lab{font-size:13px;color:var(--ink-soft)}
+  .bycomp{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+  .bycomp .row{display:flex;align-items:center;gap:9px;font-size:13px}
+  .bycomp .clogo{width:26px;height:26px;border-radius:7px;background:#fff;border:1px solid var(--line);
+    object-fit:contain;padding:2px}
+  .bycomp .cname{flex:1;color:#2b3447;font-weight:600}
+  .bycomp .cnum{background:#eef1f7;border-radius:999px;font-size:12px;font-weight:700;padding:2px 10px;color:var(--ink-soft)}
+
+  /* Distribución por etapa */
+  .distbar{display:flex;height:30px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
+  .distbar span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;min-width:0}
+  .distlegend{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:14px}
+  .distlegend .lg{display:flex;align-items:center;gap:7px;font-size:12.5px;color:#2b3447}
+  .distlegend .dot{width:11px;height:11px;border-radius:3px}
+  .distlegend b{font-weight:700}
+
+  /* Destacado */
+  .hl{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .hl li{display:flex;gap:9px;font-size:13px;line-height:1.45;color:#2b3447}
+  .hl li .ic{flex:none;width:20px;height:20px;border-radius:6px;background:#fff0ef;color:var(--brand);
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:1px}
+
+  /* ============ TOOLBAR ============ */
+  .wrap{max-width:1280px;margin:0 auto;padding:0 26px}
+  .toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0 16px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:var(--panel);color:var(--ink-soft);padding:7px 13px;
+    border-radius:999px;font-size:13px;cursor:pointer;font-weight:600;transition:.15s;display:inline-flex;align-items:center;gap:7px}
+  .chip:hover{border-color:#c7cfe2}
+  .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip .cdot{width:8px;height:8px;border-radius:50%}
+  .grow{flex:1}
+  .search{position:relative}
+  .search input{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:9px 12px 9px 34px;
+    font-size:13.5px;width:220px;outline:none}
+  .search input:focus{border-color:var(--brand)}
+  .search svg{position:absolute;left:11px;top:9px;opacity:.45}
+  .viewtoggle{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .viewtoggle button{border:0;background:transparent;padding:8px 14px;font-size:13px;cursor:pointer;color:var(--ink-soft);font-weight:600}
+  .viewtoggle button.active{background:var(--ink);color:#fff}
+
+  /* ============ TABLERO ============ */
+  .board{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-bottom:40px}
+  .col{background:#eef1f7;border-radius:14px;padding:10px;min-height:120px}
+  .col-head{display:flex;align-items:center;gap:8px;padding:6px 8px 10px;font-size:13px;font-weight:700}
+  .col-head .cnt{margin-left:auto;background:#fff;color:var(--ink-soft);border-radius:999px;font-size:12px;padding:1px 9px;font-weight:700}
+  .col-head .bar{width:4px;height:16px;border-radius:3px}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:10px;
+    cursor:pointer;box-shadow:0 1px 2px rgba(20,30,60,.04);transition:.15s;position:relative;overflow:hidden}
+  .card:hover{box-shadow:var(--shadow);transform:translateY(-1px);border-color:#d6ddee}
+  .card .stripe{position:absolute;left:0;top:0;bottom:0;width:4px}
+  .card .clogo{position:absolute;top:11px;right:11px;height:20px;max-width:64px;object-fit:contain;opacity:.95}
+  .card h3{margin:0 8px 8px 4px;font-size:14.5px;line-height:1.3;padding-right:42px}
+  .card .meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:11px;padding-left:4px}
+  .tag{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;color:#fff}
+  .stagebadge{font-size:11px;font-weight:600;color:var(--ink-soft);background:#f1f4fa;padding:3px 8px;border-radius:6px}
+  .card .foot{display:flex;align-items:center;gap:6px;margin-top:10px;padding-left:4px;font-size:11.5px;color:var(--ink-soft)}
+
+  /* Stepper de etapa (sin % inventado) */
+  .stepper{padding-left:4px}
+  .stepper .segs{display:flex;gap:4px}
+  .stepper .seg{flex:1;height:7px;border-radius:4px;background:#e3e7f0}
+  .stepper .steplabel{font-size:11.5px;color:var(--ink-soft);margin-top:7px}
+  .stepper.big .seg{height:9px}
+  .stepper.big .steplabel{font-size:13px;margin-top:9px}
+
+  /* ============ LISTA ============ */
+  .list{display:none;padding-bottom:40px}
+  .list.active{display:block}
+  .board.hidden{display:none}
+  .lrow{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;
+    display:grid;grid-template-columns:auto auto 1fr auto auto;gap:16px;align-items:center;cursor:pointer;transition:.15s}
+  .lrow:hover{box-shadow:var(--shadow);border-color:#d6ddee}
+  .lrow .lstripe{width:4px;height:38px;border-radius:3px}
+  .lrow .llogo{height:24px;max-width:60px;object-fit:contain}
+  .lrow h3{margin:0 0 4px;font-size:14.5px}
+  .lrow .lmeta{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .lrow .lstep{width:190px}
+  .statuspill{font-size:11px;font-weight:700;padding:4px 11px;border-radius:999px;white-space:nowrap}
+
+  /* ============ MODAL ============ */
+  .overlay{position:fixed;inset:0;background:rgba(15,23,42,.5);display:none;align-items:flex-start;justify-content:center;
+    padding:40px 16px;z-index:50;overflow:auto;backdrop-filter:blur(2px)}
+  .overlay.open{display:flex}
+  .modal{background:var(--panel);border-radius:18px;max-width:740px;width:100%;box-shadow:0 30px 80px rgba(15,23,42,.35);
+    overflow:hidden;animation:pop .18s ease}
+  @keyframes pop{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
+  .modal-head{padding:20px 24px;color:#fff;position:relative;display:flex;gap:14px;align-items:center}
+  .modal-head .mlogo{background:#fff;border-radius:10px;padding:7px 9px;flex:none}
+  .modal-head .mlogo img{height:30px;display:block}
+  .modal-head h2{margin:0;font-size:19px;letter-spacing:-.3px}
+  .modal-head .mh-tags{display:flex;gap:7px;align-items:center;margin-top:9px;flex-wrap:wrap}
+  .modal-head .close{position:absolute;top:16px;right:18px;background:rgba(255,255,255,.22);border:0;color:#fff;
+    width:30px;height:30px;border-radius:50%;font-size:18px;cursor:pointer;line-height:1}
+  .modal-body{padding:22px 26px 26px}
+  .sec{margin-bottom:20px}
+  .sec h4{margin:0 0 9px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-soft)}
+  .sec p{margin:0;font-size:14px;line-height:1.55;color:#2b3447}
+  .sec ul{margin:0;padding-left:18px;font-size:14px;line-height:1.7;color:#2b3447}
+  .timeline{display:flex;gap:0;margin-top:4px}
+  .tstep{flex:1;text-align:center;position:relative;font-size:11.5px;color:var(--ink-soft)}
+  .tstep .tdot{width:16px;height:16px;border-radius:50%;background:#d7deea;margin:0 auto 7px;border:3px solid #fff;
+    box-shadow:0 0 0 1px #d7deea;position:relative;z-index:2}
+  .tstep::before{content:"";position:absolute;top:7px;left:-50%;width:100%;height:3px;background:#d7deea;z-index:1}
+  .tstep:first-child::before{display:none}
+  .tstep.done .tdot{background:var(--s-done);box-shadow:0 0 0 1px var(--s-done)}
+  .tstep.done::before{background:var(--s-done)}
+  .tstep.current .tdot{background:var(--s-prog);box-shadow:0 0 0 4px rgba(37,99,235,.2)}
+  .tstep.current::before{background:var(--s-done)}
+  .tstep.current b{color:var(--s-prog)}
+  .tbl-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;overflow-x:auto}
+  table.teams{width:100%;border-collapse:collapse;font-size:12.5px;min-width:560px}
+  table.teams th{background:#f6f8fc;text-align:left;padding:9px 12px;font-size:11px;text-transform:uppercase;
+    letter-spacing:.4px;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+  table.teams td{padding:10px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  table.teams tr:last-child td{border-bottom:0}
+  table.teams .tname{font-weight:700}
+  .ecount{display:flex;gap:14px;margin-bottom:12px;flex-wrap:wrap}
+  .ecount .e{background:#f6f8fc;border-radius:10px;padding:8px 14px;font-size:12px;color:var(--ink-soft)}
+  .ecount .e b{display:block;font-size:18px;color:var(--ink);margin-top:2px}
+  .notebox{background:#fff8e6;border:1px solid #f3e2b3;border-radius:10px;padding:10px 13px;font-size:12.5px;color:#7a5b12}
+  .btn-link{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;text-decoration:none;
+    padding:9px 15px;border-radius:9px;font-size:13px;font-weight:600}
+
+  footer.foot{max-width:1280px;margin:0 auto;padding:10px 26px 44px;color:var(--ink-soft);font-size:12px}
+
+  @media(max-width:980px){
+    .exec-grid{grid-template-columns:1fr}
+    .board{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:620px){
+    .board{grid-template-columns:1fr}
+    .lrow{grid-template-columns:auto auto 1fr;row-gap:10px}
+    .lrow .lstep{width:100%}
+    .search input{width:150px}
+    .brand-block h1{font-size:17px}
+  }
+</style>
+</head>
+<body>
+
+<!-- FONDO ANIMADO -->
+<div class="bg-anim" aria-hidden="true">
+  <img class="b1" src="logoprosur.png" alt="">
+  <img class="b2" src="logoprosur.png" alt="">
+  <img class="b3" src="logoprosur.png" alt="">
+  <img class="b4" src="logoprosur.png" alt="">
+  <img class="b5" src="logoprosur.png" alt="">
+  <img class="b6" src="logoprosur.png" alt="">
+  <img class="b7" src="logoprosur.png" alt="">
+</div>
+
+<header class="top">
+  <div class="top-row">
+    <div class="brand-left">
+      <div class="logo-chip"><img src="logoprosur.png" alt="Grupo Prosur"></div>
+      <div class="brand-block">
+        <h1>Rendición de Cuentas · Proyectos</h1>
+        <p>Tablero de seguimiento - estatus y avance por etapa</p>
+      </div>
+    </div>
+    <div class="updated">Última actualización<br><b id="updated-date">—</b></div>
+  </div>
+</header>
+
+<!-- RESUMEN EJECUTIVO -->
+<div class="exec-wrap">
+  <section class="exec">
+    <div class="exec-head">
+      <h2><span class="pin"></span>Resumen Ejecutivo</h2>
+      <span class="asof" id="asof"></span>
+    </div>
+    <div class="exec-grid">
+      <div class="ex-card">
+        <h4>Proyectos activos</h4>
+        <div class="kpi-total"><span class="big" id="kpi-total">0</span><span class="lab">proyectos<br>en seguimiento</span></div>
+        <div class="bycomp" id="bycomp"></div>
+      </div>
+      <div class="ex-card">
+        <h4>Distribución por etapa</h4>
+        <div class="distbar" id="distbar"></div>
+        <div class="distlegend" id="distlegend"></div>
+      </div>
+      <div class="ex-card">
+        <h4>Destacado</h4>
+        <ul class="hl" id="highlights"></ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <div class="toolbar">
+    <div class="chips" id="company-chips"></div>
+    <div class="grow"></div>
+    <div class="search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="Buscar proyecto…" />
+    </div>
+    <div class="viewtoggle">
+      <button id="v-board" class="active">▦ Tablero</button>
+      <button id="v-list">☰ Lista</button>
+    </div>
+  </div>
+  <div class="board" id="board"></div>
+  <div class="list" id="list"></div>
+</div>
+
+<footer class="foot">
+  Página de seguimiento interna · Grupo Prosur y empresas del grupo (Chesa, Calzamoda, 5&nbsp;Pinos, CaFi).
+</footer>
+
+<div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+
+<script>
+/* =====================================================================
+   DATOS — edita aquí. NO se inventan estatus: el estatus refleja la etapa
+   real de cada proyecto (confirmada). Flujo de etapas:
+   plan (Planeación) → prog (En progreso) → rev (En revisión) → done (Completado)
+   ===================================================================== */
+const ULTIMA_ACTUALIZACION = "23 de junio de 2026";
+
+const FLUJO = ["plan","prog","rev","done"];
+const ESTATUS = {
+  plan:{nombre:"Planeación",  hex:"#64748b"},
+  prog:{nombre:"En progreso", hex:"#2563eb"},
+  rev: {nombre:"En revisión", hex:"#d97706"},
+  done:{nombre:"Completado",  hex:"#16a34a"},
+};
+const EMPRESAS = {
+  prosur:{nombre:"Grupo Prosur", hex:"#e1251b", logo:"logoprosur.png"},
+  chesa: {nombre:"Grupo Chesa",  hex:"#0891b2", logo:"chesalogo.jpg"},
+  calza: {nombre:"Calzamoda",    hex:"#be185d", logo:"calzamoda.jpg"},
+  pinos: {nombre:"5 Pinos",      hex:"#15803d", logo:null},
+  cafi:  {nombre:"CaFi",         hex:"#c2410c", logo:"Cafi.png"},
+};
+
+/* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
+const DESTACADO = [
+  "Concurso de IA: bases lanzadas, 8 equipos inscritos y 13+ participantes de Chesa, Calzamoda y CaFi.",
+  "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
+  "Chesa: 3 proyectos de mejora continua en marcha (1 en progreso, 2 en planeación).",
+];
+
+const PROYECTOS = [
+
+  /* ---------- GRUPO PROSUR ---------- */
+  {
+    id:"reto-ia",
+    nombre:"Concurso de Innovación con IA",
+    empresa:"prosur",
+    estatus:"prog",
+    etapa:"Inscripciones abiertas",
+    actualizado:"23 jun 2026",
+    descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
+    avances:[
+      "✅ Bases del concurso publicadas y difundidas.",
+      "✅ 8 equipos inscritos, con más de 13 colaboradores participando.",
+      "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
+      "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
+    ],
+    proximos:[
+      "Cerrar el periodo de inscripciones y confirmar equipos finales.",
+      "Iniciar la etapa de desarrollo de soluciones con acompañamiento.",
+      "Definir criterios y jurado para la evaluación.",
+    ],
+    link:"https://reto-ia.prosur.com.mx/",
+    etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
+    currentStage:1,
+    nota:"Se registran 8 equipos inscritos; aquí aparecen 7 capturados. Falta confirmar/capturar 1 equipo.",
+    equipos:[
+      {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
+      {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
+      {nombre:"Los que perdieron", empresa:"Grupo Chesa", area:"Marketing", integrantes:"Marlon Octavio Giles García · Giovanni Trejo Matías", problema:"Clientes olvidan sus servicios y ponen en riesgo la garantía.", fecha:"17 jun"},
+      {nombre:"Procesos", empresa:"Calzamoda", area:"Auditoría y Procesos", integrantes:"Diego López Guzmán", problema:"Planeación de compras manual en Río Vinyl (Microsip), ~4 hrs por ciclo. Proyecto: Resurtido_compras_rv.", fecha:"18 jun"},
+      {nombre:"T-800", empresa:"CaFi", area:"Marketing", integrantes:"Oswaldo Rafael Hernández Rodríguez", problema:"Asignación manual de leads; con alto volumen supera las 4 hrs.", fecha:"19 jun"},
+      {nombre:"El ingeniero", empresa:"Calzamoda", area:"Sub Gerencia", integrantes:"Equipo de 6 colaboradores", problema:"Venta sugestiva y atención por mensajería manual; bot de venta sugestiva.", fecha:"19 jun"},
+      {nombre:"RefaBot Team", empresa:"Grupo Chesa", area:"Refacciones", integrantes:"Carlos de Jesús Camacho Sánchez", problema:"Sin seguimiento en WhatsApp de solicitudes de insumos (Changan/Renault); cuellos de botella.", fecha:"21 jun"},
+    ],
+  },
+  {
+    id:"compilado-sistemas",
+    nombre:"Compilado de Sistemas por Unidad de Negocio",
+    empresa:"prosur",
+    estatus:"prog",
+    etapa:"Levantamiento / Inventario",
+    actualizado:"23 jun 2026",
+    descripcion:"Inventario y mapeo de todos los sistemas y desarrollos tecnológicos en uso en cada unidad de negocio del grupo, para tener visibilidad centralizada, evitar duplicidad de esfuerzos y unificar el seguimiento. El levantamiento está iniciando por Grupo Chesa.",
+    avances:[
+      "✅ Inicio del levantamiento de sistemas en Grupo Chesa.",
+      "🔧 RH — Sistema de programación de juntas (en desarrollo).",
+      "🔧 Contabilidad — Optimización del sistema contable (en desarrollo).",
+      "🔧 Sistemas — Unificación de plataformas para seguimiento y levantamiento de tickets (en desarrollo).",
+    ],
+    proximos:[
+      "Completar el inventario de sistemas de Grupo Chesa.",
+      "Extender el levantamiento a Calzamoda, 5 Pinos y CaFi.",
+      "Consolidar un catálogo único de plataformas por unidad de negocio.",
+    ],
+    sistemas:[
+      {unidad:"Grupo Chesa", area:"Recursos Humanos", sistema:"Programación de juntas", estado:"En desarrollo"},
+      {unidad:"Grupo Chesa", area:"Contabilidad", sistema:"Optimización del sistema contable", estado:"En desarrollo"},
+      {unidad:"Grupo Chesa", area:"Sistemas", sistema:"Unificación de plataformas (seguimiento + levantamiento de tickets)", estado:"En desarrollo"},
+    ],
+  },
+
+  /* ---------- GRUPO CHESA (gestionados en plataforma de Mejora Continua) ---------- */
+  {
+    id:"chesa-bdc",
+    nombre:"MODO de BDC",
+    empresa:"chesa",
+    estatus:"prog",
+    etapa:"En desarrollo",
+    actualizado:"23 jun 2026",
+    descripcion:"Implementación del modelo de operación BDC (Centro de Desarrollo de Negocio) en Grupo Chesa, para estandarizar la gestión de prospectos, el agendado de citas y el seguimiento al cliente.",
+    link:"https://mejora-continua-chesa.netlify.app/",
+    nota:"El avance detallado de este proyecto se gestiona en la plataforma de Mejora Continua de Chesa.",
+  },
+  {
+    id:"chesa-taller-herramientas",
+    nombre:"Taller de Herramientas a Nivel Empresa",
+    empresa:"chesa",
+    estatus:"plan",
+    etapa:"Planeación / Diseño",
+    actualizado:"23 jun 2026",
+    descripcion:"Taller de capacitación y despliegue de herramientas a nivel empresa para fortalecer las capacidades de los equipos en Grupo Chesa. Actualmente en etapa de planeación y diseño.",
+    link:"https://mejora-continua-chesa.netlify.app/",
+    nota:"El avance detallado de este proyecto se gestiona en la plataforma de Mejora Continua de Chesa.",
+  },
+  {
+    id:"chesa-gestion-activos",
+    nombre:"Reingeniería del Proceso de Gestión de Activos",
+    empresa:"chesa",
+    estatus:"plan",
+    etapa:"Planeación / Diseño",
+    actualizado:"23 jun 2026",
+    descripcion:"Reingeniería del proceso de gestión de activos en Grupo Chesa para optimizar el control, la trazabilidad y la eficiencia en el manejo de los activos. Actualmente en diagnóstico y diseño del nuevo proceso.",
+    link:"https://mejora-continua-chesa.netlify.app/",
+    nota:"El avance detallado de este proyecto se gestiona en la plataforma de Mejora Continua de Chesa.",
+  },
+
+];
+
+/* =====================================================================
+   LÓGICA
+   ===================================================================== */
+let filtroEmpresa="todos", busqueda="", vista="board";
+const $ = s => document.querySelector(s);
+const elBoard=$("#board"), elList=$("#list");
+$("#updated-date").textContent = ULTIMA_ACTUALIZACION;
+$("#asof").textContent = "al " + ULTIMA_ACTUALIZACION;
+
+function filtrados(){
+  return PROYECTOS.filter(p=>{
+    const okE = filtroEmpresa==="todos" || p.empresa===filtroEmpresa;
+    const okB = !busqueda || (p.nombre+" "+(p.descripcion||"")+" "+EMPRESAS[p.empresa].nombre)
+                  .toLowerCase().includes(busqueda.toLowerCase());
+    return okE && okB;
+  });
+}
+
+/* ----- RESUMEN EJECUTIVO ----- */
+function renderExec(){
+  $("#kpi-total").textContent = PROYECTOS.length;
+
+  // Por empresa
+  const empUsadas = [...new Set(PROYECTOS.map(p=>p.empresa))];
+  $("#bycomp").innerHTML = empUsadas.map(k=>{
+    const e=EMPRESAS[k], n=PROYECTOS.filter(p=>p.empresa===k).length;
+    const logo = e.logo?`<img class="clogo" src="${e.logo}" alt="">`
+                       :`<span class="clogo" style="background:${e.hex}"></span>`;
+    return `<div class="row">${logo}<span class="cname">${e.nombre}</span><span class="cnum">${n}</span></div>`;
+  }).join("");
+
+  // Distribución por etapa
+  const total = PROYECTOS.length;
+  const barHTML = FLUJO.map(k=>{
+    const n = PROYECTOS.filter(p=>p.estatus===k).length;
+    if(!n) return "";
+    const w = (n/total*100).toFixed(1);
+    return `<span style="width:${w}%;background:${ESTATUS[k].hex}" title="${ESTATUS[k].nombre}: ${n}">${n}</span>`;
+  }).join("");
+  $("#distbar").innerHTML = barHTML;
+  $("#distlegend").innerHTML = FLUJO.map(k=>{
+    const n = PROYECTOS.filter(p=>p.estatus===k).length;
+    return `<span class="lg"><span class="dot" style="background:${ESTATUS[k].hex}"></span>${ESTATUS[k].nombre} <b>${n}</b></span>`;
+  }).join("");
+
+  // Destacado
+  $("#highlights").innerHTML = DESTACADO.map(t=>`<li><span class="ic">★</span><span>${t}</span></li>`).join("");
+}
+
+/* ----- CHIPS ----- */
+function renderChips(){
+  const empUsadas = [...new Set(PROYECTOS.map(p=>p.empresa))];
+  let html = `<button class="chip ${filtroEmpresa==='todos'?'active':''}" data-emp="todos">Todas</button>`;
+  empUsadas.forEach(k=>{
+    const e=EMPRESAS[k];
+    html += `<button class="chip ${filtroEmpresa===k?'active':''}" data-emp="${k}"><span class="cdot" style="background:${e.hex}"></span>${e.nombre}</button>`;
+  });
+  $("#company-chips").innerHTML = html;
+  document.querySelectorAll("#company-chips .chip").forEach(ch=>{
+    ch.onclick=()=>{filtroEmpresa=ch.dataset.emp;renderChips();render();};
+  });
+}
+
+/* ----- STEPPER DE ETAPA (etapa X de 4, sin % inventado) ----- */
+function stepperHTML(estatus, big){
+  const ci=FLUJO.indexOf(estatus), hex=ESTATUS[estatus].hex;
+  const segs=FLUJO.map((k,i)=>`<span class="seg" style="${i<=ci?'background:'+hex:''}"></span>`).join("");
+  return `<div class="stepper ${big?'big':''}">
+    <div class="segs">${segs}</div>
+    <div class="steplabel"><b style="color:${hex}">${ESTATUS[estatus].nombre}</b> · etapa ${ci+1} de 4</div>
+  </div>`;
+}
+
+/* ----- TARJETA ----- */
+function cardHTML(p){
+  const e=EMPRESAS[p.empresa];
+  const logo = e.logo?`<img class="clogo" src="${e.logo}" alt="${e.nombre}">`:'';
+  return `<div class="card" data-id="${p.id}">
+    <div class="stripe" style="background:${e.hex}"></div>
+    ${logo}
+    <h3>${p.nombre}</h3>
+    <div class="meta">
+      <span class="tag" style="background:${e.hex}">${e.nombre}</span>
+      <span class="stagebadge">${p.etapa}</span>
+    </div>
+    ${stepperHTML(p.estatus)}
+    ${p.equipos?`<div class="foot">👥 ${p.equipos.length} equipos inscritos</div>`:''}
+    ${p.sistemas?`<div class="foot">🗂️ ${p.sistemas.length} sistemas mapeados</div>`:''}
+  </div>`;
+}
+
+/* ----- TABLERO ----- */
+function renderBoard(list){
+  elBoard.innerHTML = FLUJO.map(k=>{
+    const items=list.filter(p=>p.estatus===k);
+    return `<div class="col">
+      <div class="col-head"><span class="bar" style="background:${ESTATUS[k].hex}"></span>${ESTATUS[k].nombre}<span class="cnt">${items.length}</span></div>
+      ${items.map(cardHTML).join("") || '<div style="padding:10px;font-size:12px;color:#9aa3b5">— Sin proyectos —</div>'}
+    </div>`;
+  }).join("");
+  bindCards();
+}
+
+/* ----- LISTA ----- */
+function renderList(list){
+  elList.innerHTML = list.map(p=>{
+    const e=EMPRESAS[p.empresa], s=ESTATUS[p.estatus];
+    const logo = e.logo?`<img class="llogo" src="${e.logo}" alt="">`:`<span class="lstripe" style="background:${e.hex}"></span>`;
+    return `<div class="lrow" data-id="${p.id}">
+      <div class="lstripe" style="background:${e.hex}"></div>
+      ${logo}
+      <div>
+        <h3>${p.nombre}</h3>
+        <div class="lmeta"><span class="tag" style="background:${e.hex}">${e.nombre}</span><span class="stagebadge">${p.etapa}</span></div>
+      </div>
+      <div class="statuspill" style="background:${s.hex}1a;color:${s.hex}">${s.nombre}</div>
+      <div class="lstep">${stepperHTML(p.estatus)}</div>
+    </div>`;
+  }).join("") || '<div style="padding:20px;color:#9aa3b5">No hay proyectos que coincidan.</div>';
+  bindCards();
+}
+
+function bindCards(){ document.querySelectorAll("[data-id]").forEach(el=>el.onclick=()=>abrirModal(el.dataset.id)); }
+
+/* ----- MODAL ----- */
+function abrirModal(id){
+  const p=PROYECTOS.find(x=>x.id===id); if(!p) return;
+  const e=EMPRESAS[p.empresa], s=ESTATUS[p.estatus];
+
+  let timeline="";
+  if(p.etapas){
+    timeline=`<div class="sec"><h4>Etapas del proyecto</h4><div class="timeline">`+
+      p.etapas.map((et,i)=>{
+        const cls=i<p.currentStage?'done':(i===p.currentStage?'current':'');
+        return `<div class="tstep ${cls}"><div class="tdot"></div>${i===p.currentStage?'<b>'+et+'</b>':et}</div>`;
+      }).join("")+`</div></div>`;
+  }
+
+  let sistemas="";
+  if(p.sistemas){
+    const nU=new Set(p.sistemas.map(t=>t.unidad)).size;
+    sistemas=`<div class="sec"><h4>Sistemas / desarrollos por unidad de negocio</h4>
+      <div class="ecount"><div class="e">Sistemas mapeados<b>${p.sistemas.length}</b></div><div class="e">Unidades de negocio<b>${nU}</b></div></div>
+      <div class="tbl-wrap"><table class="teams"><thead><tr><th>Unidad</th><th>Área</th><th>Sistema / Desarrollo</th><th>Estado</th></tr></thead><tbody>
+      ${p.sistemas.map(t=>`<tr><td class="tname">${t.unidad}</td><td>${t.area}</td><td>${t.sistema}</td><td>${t.estado}</td></tr>`).join("")}
+      </tbody></table></div></div>`;
+  }
+
+  let equipos="";
+  if(p.equipos){
+    const nE=new Set(p.equipos.map(t=>t.empresa)).size;
+    equipos=`<div class="sec"><h4>Equipos inscritos</h4>
+      <div class="ecount"><div class="e">Equipos<b>${p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>13+</b></div></div>
+      <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
+      ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
+      </tbody></table></div></div>`;
+  }
+
+  const mlogo = e.logo?`<div class="mlogo"><img src="${e.logo}" alt="${e.nombre}"></div>`:'';
+  $("#modal").innerHTML = `
+    <div class="modal-head" style="background:linear-gradient(120deg,${e.hex},${shade(e.hex)})">
+      <button class="close" onclick="cerrarModal()">×</button>
+      ${mlogo}
+      <div>
+        <h2>${p.nombre}</h2>
+        <div class="mh-tags">
+          <span class="tag" style="background:rgba(255,255,255,.25)">${e.nombre}</span>
+          <span class="tag" style="background:rgba(255,255,255,.25)">${s.nombre}</span>
+          <span class="tag" style="background:rgba(255,255,255,.25)">${p.etapa}</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="sec">${stepperHTML(p.estatus,true)}</div>
+      <div class="sec"><h4>Descripción</h4><p>${p.descripcion||'—'}</p></div>
+      ${timeline}
+      ${p.avances?`<div class="sec"><h4>Avances logrados</h4><ul>${p.avances.map(a=>`<li>${a}</li>`).join("")}</ul></div>`:''}
+      ${p.proximos?`<div class="sec"><h4>Próximos pasos</h4><ul>${p.proximos.map(a=>`<li>${a}</li>`).join("")}</ul></div>`:''}
+      ${sistemas}
+      ${equipos}
+      ${p.nota?`<div class="sec"><div class="notebox">ℹ️ ${p.nota}</div></div>`:''}
+      ${p.link?`<a class="btn-link" href="${p.link}" target="_blank">🔗 Ver plataforma del proyecto</a>`:''}
+    </div>`;
+  $("#overlay").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function cerrarModal(){ $("#overlay").classList.remove("open"); document.body.style.overflow=""; }
+$("#overlay").onclick=e=>{ if(e.target.id==="overlay") cerrarModal(); };
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") cerrarModal(); });
+
+function shade(hex){
+  const n=parseInt(hex.slice(1),16);
+  let r=Math.max(0,(n>>16)-30),g=Math.max(0,((n>>8)&255)-20),b=Math.min(255,(n&255)+20);
+  return `#${((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}`;
+}
+
+function render(){
+  const list=filtrados();
+  renderBoard(list);
+  renderList(list);
+  elBoard.classList.toggle("hidden", vista!=="board");
+  elList.classList.toggle("active", vista==="list");
+}
+
+$("#search").oninput=e=>{busqueda=e.target.value;render();};
+$("#v-board").onclick=()=>{vista="board";$("#v-board").classList.add("active");$("#v-list").classList.remove("active");render();};
+$("#v-list").onclick =()=>{vista="list"; $("#v-list").classList.add("active"); $("#v-board").classList.remove("active");render();};
+
+renderExec();
+renderChips();
+render();
+</script>
+</body>
+</html>
