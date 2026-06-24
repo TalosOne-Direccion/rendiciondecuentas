@@ -305,7 +305,7 @@
    real de cada proyecto (confirmada). Flujo de etapas:
    plan (Planeación) → prog (En progreso) → rev (En revisión) → done (Completado)
    ===================================================================== */
-const ULTIMA_ACTUALIZACION = "23 de junio de 2026";
+const ULTIMA_ACTUALIZACION = "24 de junio de 2026";
 
 const FLUJO = ["plan","prog","rev","done"];
 const ESTATUS = {
@@ -324,7 +324,8 @@ const EMPRESAS = {
 
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
-  "Concurso de IA: bases lanzadas, 8 equipos inscritos y 13+ participantes de Chesa, Calzamoda y CaFi.",
+  "Concurso de IA: bases lanzadas, 9 equipos inscritos y 17+ participantes de Chesa, Calzamoda y CaFi.",
+  "Onboarding Blunk: arranca la planeación del nuevo modelo SaaS (IA, SAT, OCR y firma electrónica); detona con su primer gran cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
   "Chesa: 3 proyectos de mejora continua en marcha (1 en progreso, 2 en planeación).",
 ];
@@ -338,11 +339,11 @@ const PROYECTOS = [
     empresa:"prosur",
     estatus:"prog",
     etapa:"Inscripciones abiertas",
-    actualizado:"23 jun 2026",
+    actualizado:"24 jun 2026",
     descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
     avances:[
       "✅ Bases del concurso publicadas y difundidas.",
-      "✅ 8 equipos inscritos, con más de 13 colaboradores participando.",
+      "✅ 9 equipos inscritos, con 17+ colaboradores participando.",
       "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
       "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
     ],
@@ -354,7 +355,8 @@ const PROYECTOS = [
     link:"https://reto-ia.prosur.com.mx/",
     etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
     currentStage:1,
-    nota:"Se registran 8 equipos inscritos; aquí aparecen 7 capturados. Falta confirmar/capturar 1 equipo.",
+    inscritos:9,
+    nota:"Se registran 9 equipos inscritos; aquí aparecen 8 capturados. Falta capturar 1 equipo.",
     equipos:[
       {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
       {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
@@ -363,6 +365,7 @@ const PROYECTOS = [
       {nombre:"T-800", empresa:"CaFi", area:"Marketing", integrantes:"Oswaldo Rafael Hernández Rodríguez", problema:"Asignación manual de leads; con alto volumen supera las 4 hrs.", fecha:"19 jun"},
       {nombre:"El ingeniero", empresa:"Calzamoda", area:"Sub Gerencia", integrantes:"Equipo de 6 colaboradores", problema:"Venta sugestiva y atención por mensajería manual; bot de venta sugestiva.", fecha:"19 jun"},
       {nombre:"RefaBot Team", empresa:"Grupo Chesa", area:"Refacciones", integrantes:"Carlos de Jesús Camacho Sánchez", problema:"Sin seguimiento en WhatsApp de solicitudes de insumos (Changan/Renault); cuellos de botella.", fecha:"21 jun"},
+      {nombre:"G&amp;A", empresa:"CaFi", area:"Administración Grupal", integrantes:"Karina Suárez Álvarez · Juan Gonzalo Cruz López · Rigoberto Iván Maldonado Ramos · Mario Arturo López Gómez", problema:"Agilizar la renovación de créditos grupales optimizando los tiempos de sincronización, autorización y desembolso, para que el cliente reciba la disposición de su crédito el mismo día de la solicitud.", fecha:"23 jun"},
     ],
   },
   {
@@ -389,6 +392,22 @@ const PROYECTOS = [
       {unidad:"Grupo Chesa", area:"Contabilidad", sistema:"Optimización del sistema contable", estado:"En desarrollo"},
       {unidad:"Grupo Chesa", area:"Sistemas", sistema:"Unificación de plataformas (seguimiento + levantamiento de tickets)", estado:"En desarrollo"},
     ],
+  },
+
+  {
+    id:"blunk-onboarding",
+    nombre:"Programa Onboarding Blunk",
+    empresa:"prosur",
+    estatus:"plan",
+    etapa:"Planeación / Estructuración",
+    actualizado:"24 jun 2026",
+    descripcion:"Estructuración de un proceso de implementación ágil para el nuevo modelo SaaS de Blunk, que dejará atrás el sistema Legacy y ofrecerá a las agencias automotrices una solución robusta con inteligencia artificial, validaciones ante el SAT, OCR y firmas electrónicas. El catalizador inmediato para definir este proceso es la entrada de su primer gran cliente: Grupo Mena.",
+    proximos:[
+      "Definir y estructurar el proceso de implementación ágil del nuevo modelo SaaS.",
+      "Planear la transición del sistema Legacy hacia el nuevo SaaS.",
+      "Habilitar el onboarding del primer gran cliente: Grupo Mena.",
+    ],
+    nota:"Capacidades clave del nuevo modelo SaaS: inteligencia artificial, validaciones ante el SAT, OCR y firmas electrónicas.",
   },
 
   /* ---------- GRUPO CHESA (gestionados en plataforma de Mejora Continua) ---------- */
@@ -514,7 +533,7 @@ function cardHTML(p){
       <span class="stagebadge">${p.etapa}</span>
     </div>
     ${stepperHTML(p.estatus)}
-    ${p.equipos?`<div class="foot">👥 ${p.equipos.length} equipos inscritos</div>`:''}
+    ${p.equipos?`<div class="foot">👥 ${p.inscritos||p.equipos.length} equipos inscritos</div>`:''}
     ${p.sistemas?`<div class="foot">🗂️ ${p.sistemas.length} sistemas mapeados</div>`:''}
   </div>`;
 }
@@ -580,7 +599,7 @@ function abrirModal(id){
   if(p.equipos){
     const nE=new Set(p.equipos.map(t=>t.empresa)).size;
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
-      <div class="ecount"><div class="e">Equipos<b>${p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>13+</b></div></div>
+      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>17+</b></div></div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
       </tbody></table></div></div>`;
