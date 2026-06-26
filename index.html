@@ -305,7 +305,7 @@
    real de cada proyecto (confirmada). Flujo de etapas:
    plan (Planeación) → prog (En progreso) → rev (En revisión) → done (Completado)
    ===================================================================== */
-const ULTIMA_ACTUALIZACION = "24 de junio de 2026";
+const ULTIMA_ACTUALIZACION = "26 de junio de 2026";
 
 const FLUJO = ["plan","prog","rev","done"];
 const ESTATUS = {
@@ -324,10 +324,10 @@ const EMPRESAS = {
 
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
-  "Concurso de IA: bases lanzadas, 9 equipos inscritos y 17+ participantes de Chesa, Calzamoda y CaFi.",
-  "Onboarding Blunk: arranca la planeación del nuevo modelo SaaS (IA, SAT, OCR y firma electrónica); detona con su primer gran cliente, Grupo Mena.",
+  "Concurso de IA: bases lanzadas, 15 equipos inscritos y 27 participantes de Chesa, Calzamoda y CaFi.",
+  "Onboarding Blunk: pasa a ejecución; en elaboración el Project Charter del nuevo modelo SaaS (IA, SAT, OCR y firma electrónica), detonado por su primer gran cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
-  "Chesa: 4 proyectos de mejora continua en marcha (1 en progreso, 3 en planeación).",
+  "Chesa: 3 proyectos de mejora continua en marcha (1 en progreso, 2 en planeación).",
 ];
 
 const PROYECTOS = [
@@ -339,11 +339,11 @@ const PROYECTOS = [
     empresa:"prosur",
     estatus:"prog",
     etapa:"Inscripciones abiertas",
-    actualizado:"24 jun 2026",
+    actualizado:"26 jun 2026",
     descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
     avances:[
       "✅ Bases del concurso publicadas y difundidas.",
-      "✅ 9 equipos inscritos, con 17+ colaboradores participando.",
+      "✅ 15 equipos inscritos, con 27 colaboradores participando.",
       "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
       "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
     ],
@@ -355,8 +355,7 @@ const PROYECTOS = [
     link:"https://reto-ia.prosur.com.mx/",
     etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
     currentStage:1,
-    inscritos:9,
-    nota:"Se registran 9 equipos inscritos; aquí aparecen 8 capturados. Falta capturar 1 equipo.",
+    inscritos:15,
     equipos:[
       {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
       {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
@@ -366,6 +365,13 @@ const PROYECTOS = [
       {nombre:"El ingeniero", empresa:"Calzamoda", area:"Sub Gerencia", integrantes:"Equipo de 6 colaboradores", problema:"Venta sugestiva y atención por mensajería manual; bot de venta sugestiva.", fecha:"19 jun"},
       {nombre:"RefaBot Team", empresa:"Grupo Chesa", area:"Refacciones", integrantes:"Carlos de Jesús Camacho Sánchez", problema:"Sin seguimiento en WhatsApp de solicitudes de insumos (Changan/Renault); cuellos de botella.", fecha:"21 jun"},
       {nombre:"G&amp;A", empresa:"CaFi", area:"Administración Grupal", integrantes:"Karina Suárez Álvarez · Juan Gonzalo Cruz López · Rigoberto Iván Maldonado Ramos · Mario Arturo López Gómez", problema:"Agilizar la renovación de créditos grupales optimizando los tiempos de sincronización, autorización y desembolso, para que el cliente reciba la disposición de su crédito el mismo día de la solicitud.", fecha:"23 jun"},
+      {nombre:"OpTeam", empresa:"Grupo Chesa", area:"Ventas de Flotas", integrantes:"Fernando de Jesús Mora Saldaña", problema:"Clasificar y dar seguimiento óptimo a los clientes —desde los que no compraron al inicio por falta de seguimiento, hasta los que no se atienden a tiempo por estar viajando, prospectando o atendiendo a otro cliente.", fecha:"24 jun"},
+      {nombre:"TalentIA 360", empresa:"Grupo Chesa", area:"Talento Humano", integrantes:"María Elizabeth Ovalle Islas · Alejandra Jocabeth Gordillo Morales", problema:"Talento Humano gestiona 800+ colaboradores en 16 agencias con 4 Excel desconectados y carga manual a Power BI; cada reporte tarda 5-8 días, con datos contradictorios y sin visibilidad en tiempo real de reclutamiento, rotación y polígrafo.", fecha:"24 jun"},
+      {nombre:"Impulso Inteligente", empresa:"Grupo Chesa", area:"BDC", integrantes:"Ángel Francisco Liévano Trejo", problema:"En el BDC se maneja información de varias fuentes (DMS, CRM, PROSUR, SIMA) por agencia y 3 marcas, cada una con formato distinto; hoy se depura, homologa y clasifica registro por registro de forma manual. Buscan consolidarla y clasificarla automáticamente; primera fase: Posventa BDC.", fecha:"25 jun"},
+      {nombre:"Smart Norm", empresa:"Grupo Chesa", area:"Talento Humano", integrantes:"Gibran Hashmed García Cruz · Laura Jovanna Trujillo Solórzano", problema:"20+ agencias y 600+ colaboradores generan 50,000+ puntos de datos al mes (4 checadas diarias). Analizar renglón por renglón para detectar incumplimientos de jornada de forma manual es inviable para 2 responsables.", fecha:"25 jun"},
+      {nombre:"La patrulla del chip perdido", empresa:"CaFi", area:"Administración", integrantes:"Stephanie Hernández · César Flores", problema:"Control de líneas celulares: asignación de consumo mensual por centro de costos, identificación de líneas vs. usuarios y descuentos vía nómina por el gasto celular.", fecha:"26 jun"},
+      {nombre:"La santa conciliación", empresa:"CaFi", area:"Contabilidad", integrantes:"Elizabeth Carpio", problema:"Conciliación de los viáticos pagados con la tarjeta corporativa CLARA; hoy genera demoras en los estados financieros, retrabajos en el registro y pérdida de tiempo en el seguimiento con cada tarjetahabiente.", fecha:"26 jun"},
+      {nombre:"El Señor de los arrendamientos", empresa:"CaFi", area:"Contabilidad", integrantes:"Vicente Jiménez", problema:"Mejorar la carátula financiera conforme a la NIF D-5, controlando la depreciación de los arrendamientos puros en el activo fijo; evita observaciones de autoridades, fondeadores y casas calificadoras.", fecha:"26 jun"},
     ],
   },
   {
@@ -398,14 +404,17 @@ const PROYECTOS = [
     id:"blunk-onboarding",
     nombre:"Programa Onboarding Blunk",
     empresa:"prosur",
-    estatus:"plan",
-    etapa:"Planeación / Estructuración",
-    actualizado:"24 jun 2026",
+    estatus:"prog",
+    etapa:"Gestión del proyecto · Project Charter",
+    actualizado:"26 jun 2026",
     descripcion:"Estructuración de un proceso de implementación ágil para el nuevo modelo SaaS de Blunk, que dejará atrás el sistema Legacy y ofrecerá a las agencias automotrices una solución robusta con inteligencia artificial, validaciones ante el SAT, OCR y firmas electrónicas. El catalizador inmediato para definir este proceso es la entrada de su primer gran cliente: Grupo Mena.",
+    avances:[
+      "🔧 En elaboración la propuesta de gestión del proyecto, iniciando con el Project Charter (acta de constitución).",
+    ],
     proximos:[
-      "Definir y estructurar el proceso de implementación ágil del nuevo modelo SaaS.",
-      "Planear la transición del sistema Legacy hacia el nuevo SaaS.",
-      "Habilitar el onboarding del primer gran cliente: Grupo Mena.",
+      "Concluir y presentar el Project Charter del proyecto.",
+      "Definir el proceso de implementación ágil del nuevo modelo SaaS.",
+      "Planear la transición del Legacy y el onboarding del primer cliente: Grupo Mena.",
     ],
     nota:"Capacidades clave del nuevo modelo SaaS: inteligencia artificial, validaciones ante el SAT, OCR y firmas electrónicas.",
   },
@@ -441,17 +450,6 @@ const PROYECTOS = [
     etapa:"Planeación / Diseño",
     actualizado:"23 jun 2026",
     descripcion:"Reingeniería del proceso de gestión de activos en Grupo Chesa para optimizar el control, la trazabilidad y la eficiencia en el manejo de los activos. Actualmente en diagnóstico y diseño del nuevo proceso.",
-    link:"https://mejora-continua-chesa.netlify.app/",
-    nota:"El avance detallado de este proyecto se gestiona en la plataforma de Mejora Continua de Chesa.",
-  },
-  {
-    id:"chesa-capacitacion-ia",
-    nombre:"Programa de Capacitación en Inteligencia Artificial",
-    empresa:"chesa",
-    estatus:"plan",
-    etapa:"Planeación / Diseño",
-    actualizado:"24 jun 2026",
-    descripcion:"Programa de capacitación en herramientas de Inteligencia Artificial para potenciar la productividad e innovación de los colaboradores en Grupo Chesa.",
     link:"https://mejora-continua-chesa.netlify.app/",
     nota:"El avance detallado de este proyecto se gestiona en la plataforma de Mejora Continua de Chesa.",
   },
@@ -610,7 +608,7 @@ function abrirModal(id){
   if(p.equipos){
     const nE=new Set(p.equipos.map(t=>t.empresa)).size;
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
-      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>17+</b></div></div>
+      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>27</b></div></div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
       </tbody></table></div></div>`;
