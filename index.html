@@ -324,7 +324,7 @@ const EMPRESAS = {
 
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
-  "Concurso de IA: bases lanzadas, 15 equipos inscritos y 27 participantes de Chesa, Calzamoda y CaFi.",
+  "Concurso de IA: bases lanzadas, 16 equipos inscritos y 29 participantes de Chesa, Calzamoda y CaFi.",
   "Onboarding Blunk: pasa a ejecución; en elaboración el Project Charter del nuevo modelo SaaS (IA, SAT, OCR y firma electrónica), detonado por su primer gran cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
   "Chesa: 3 proyectos de mejora continua en marcha (1 en progreso, 2 en planeación).",
@@ -343,7 +343,7 @@ const PROYECTOS = [
     descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
     avances:[
       "✅ Bases del concurso publicadas y difundidas.",
-      "✅ 15 equipos inscritos, con 27 colaboradores participando.",
+      "✅ 16 equipos inscritos, con 29 colaboradores participando.",
       "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
       "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
     ],
@@ -355,7 +355,7 @@ const PROYECTOS = [
     link:"https://reto-ia.prosur.com.mx/",
     etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
     currentStage:1,
-    inscritos:15,
+    inscritos:16,
     equipos:[
       {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
       {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
@@ -372,6 +372,7 @@ const PROYECTOS = [
       {nombre:"La patrulla del chip perdido", empresa:"CaFi", area:"Administración", integrantes:"Stephanie Hernández · César Flores", problema:"Control de líneas celulares: asignación de consumo mensual por centro de costos, identificación de líneas vs. usuarios y descuentos vía nómina por el gasto celular.", fecha:"26 jun"},
       {nombre:"La santa conciliación", empresa:"CaFi", area:"Contabilidad", integrantes:"Elizabeth Carpio", problema:"Conciliación de los viáticos pagados con la tarjeta corporativa CLARA; hoy genera demoras en los estados financieros, retrabajos en el registro y pérdida de tiempo en el seguimiento con cada tarjetahabiente.", fecha:"26 jun"},
       {nombre:"El Señor de los arrendamientos", empresa:"CaFi", area:"Contabilidad", integrantes:"Vicente Jiménez", problema:"Mejorar la carátula financiera conforme a la NIF D-5, controlando la depreciación de los arrendamientos puros en el activo fijo; evita observaciones de autoridades, fondeadores y casas calificadoras.", fecha:"26 jun"},
+      {nombre:"El oráculo corporativo", empresa:"CaFi", area:"Mejora continua", integrantes:"Laura Villafuerte · Erika Camacho", problema:"Hay manuales, políticas y leyes aplicables, pero no en un repositorio de consulta que garantice que están actualizados ni con gestión por IA para consultas rápidas.", fecha:"26 jun"},
     ],
   },
   {
@@ -608,7 +609,7 @@ function abrirModal(id){
   if(p.equipos){
     const nE=new Set(p.equipos.map(t=>t.empresa)).size;
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
-      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>27</b></div></div>
+      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>29</b></div></div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
       </tbody></table></div></div>`;
