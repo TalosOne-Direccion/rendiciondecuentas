@@ -327,7 +327,7 @@ const EMPRESAS = {
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
   "Concurso de IA: bases lanzadas, 21 equipos inscritos y 36 participantes de Chesa, Calzamoda y CaFi.",
-  "Onboarding Blunk: pasa a ejecución; en elaboración el Project Charter del nuevo modelo SaaS (IA, SAT, OCR y firma electrónica), detonado por su primer gran cliente, Grupo Mena.",
+  "Onboarding Blunk: definida la metodología de integración ágil en 5 etapas; va en la Etapa 1 (Levantamiento y Alcance) con su primer cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
   "Chesa: 3 proyectos de mejora continua en marcha (2 en progreso, 1 en planeación).",
 ];
@@ -413,16 +413,32 @@ const PROYECTOS = [
     nombre:"Programa Onboarding Blunk",
     empresa:"prosur",
     estatus:"prog",
-    etapa:"Gestión del proyecto · Project Charter",
-    actualizado:"26 jun 2026",
+    etapa:"Etapa 1 · Levantamiento y Alcance",
+    actualizado:"27 jun 2026",
     descripcion:"Estructuración de un proceso de implementación ágil para el nuevo modelo SaaS de Blunk, que dejará atrás el sistema Legacy y ofrecerá a las agencias automotrices una solución robusta con inteligencia artificial, validaciones ante el SAT, OCR y firmas electrónicas. El catalizador inmediato para definir este proceso es la entrada de su primer gran cliente: Grupo Mena.",
+    etapas:["1. Levantamiento y Alcance","2. Configuración (Sprints)","3. Habilitación Dinámica","4. Despliegue y Shadowing","5. Cierre y Soporte"],
+    currentStage:0,
     avances:[
-      "🔧 En elaboración la propuesta de gestión del proyecto, iniciando con el Project Charter (acta de constitución).",
+      "✅ Acordada la metodología de integración ágil del SaaS en 5 etapas (Levantamiento → Cierre y Soporte).",
+      "🔧 En elaboración el Project Charter del proyecto.",
     ],
     proximos:[
-      "Concluir y presentar el Project Charter del proyecto.",
-      "Definir el proceso de implementación ágil del nuevo modelo SaaS.",
-      "Planear la transición del Legacy y el onboarding del primer cliente: Grupo Mena.",
+      "Concluir el Project Charter y firmar el DoD Comercial (4 figuras de Blunk).",
+      "Configurar el entorno por sprints aplicando límites WIP en Jira.",
+      "Avanzar al despliegue y shadowing con el primer cliente: Grupo Mena.",
+    ],
+    metodologia:[
+      {etapa:"1. Levantamiento y Alcance", objetivo:"Delimitar el trabajo frente al cliente.", control:"DoD Comercial: firmar el documento que confirma que el cliente operará bajo las 4 figuras de Blunk (Vendedor, Cajas, Mesa de Control, Tesorería).", cliente:"Aceptar los límites de la solución SaaS estándar, sin desarrollos a la medida."},
+      {etapa:"2. Configuración (Sprints)", objetivo:"Preparar el entorno sin saturar al equipo.", control:"Límites WIP en Jira: máx. 3 módulos en 'Prueba interna superada' para forzar su liberación antes de iniciar nuevas configuraciones.", cliente:"Proveer los catálogos base (usuarios, sucursales) en los tiempos acordados."},
+      {etapa:"3. Habilitación Dinámica", objetivo:"Adopción del sistema mediante la práctica.", control:"DoD de Capacitación: un módulo se 'Libera' solo cuando el cliente procesa un expediente de prueba completo usando las guías interactivas (tooltips).", cliente:"Ejecutar escenarios reales (venta de contado o financiada) en el entorno de pruebas."},
+      {etapa:"4. Despliegue y Shadowing", objetivo:"Estabilizar la operación en la agencia real.", control:"Daily Standups (15 min): soporte 'sombra' diario — ¿qué falló ayer?, ¿qué ajustamos hoy?, ¿hay bloqueos técnicos?", cliente:"Operar con casos reales con acompañamiento presencial o remoto de Blunk."},
+      {etapa:"5. Cierre y Soporte", objetivo:"Facturar por consumo y mejorar el proceso.", control:"Retrospectiva del Sprint: documentar lecciones aprendidas y aplicarlas a la siguiente implementación automotriz.", cliente:"Levantar tickets formales (soporte@) respetando los SLAs establecidos."},
+    ],
+    reglas:[
+      "DoD estricto: un módulo (p. ej. Tesorería) está 'terminado' solo cuando el cliente valida con éxito una operación de prueba en la plataforma, no cuando el desarrollador lo configura.",
+      "Respeto absoluto al límite WIP: si hay muchas tareas en pruebas, nadie toma tickets nuevos de 'Por hacer'; el equipo se enfoca en liberar lo pendiente.",
+      "Dailies enfocadas en bloqueos: en Shadowing, los 15 min son para identificar qué impidió cerrar expedientes y cómo resolverlo hoy.",
+      "Documentación viva: la retrospectiva debe traducirse en actualizaciones reales a manuales o ajustes de código, para no repetir tropiezos con Grupo Mena o futuros clientes.",
     ],
     nota:"Capacidades clave del nuevo modelo SaaS: inteligencia artificial, validaciones ante el SAT, OCR y firmas electrónicas.",
   },
@@ -625,6 +641,19 @@ function abrirModal(id){
       </tbody></table></div></div>`;
   }
 
+  let metodologia="";
+  if(p.metodologia){
+    metodologia=`<div class="sec"><h4>Metodología de integración ágil (5 etapas)</h4>
+      <div class="tbl-wrap"><table class="teams"><thead><tr><th>Etapa</th><th>Objetivo</th><th>Control ágil interno</th><th>Acción del cliente</th></tr></thead><tbody>
+      ${p.metodologia.map((m,i)=>`<tr><td class="tname">${m.etapa}${i===p.currentStage?' <span style="color:#2563eb;font-weight:700">● actual</span>':''}</td><td>${m.objetivo}</td><td>${m.control}</td><td>${m.cliente}</td></tr>`).join("")}
+      </tbody></table></div></div>`;
+  }
+
+  let reglas="";
+  if(p.reglas){
+    reglas=`<div class="sec"><h4>Reglas de calidad del equipo técnico</h4><ul>${p.reglas.map(r=>`<li>${r}</li>`).join("")}</ul></div>`;
+  }
+
   const mlogo = e.logo?`<div class="mlogo"><img src="${e.logo}" alt="${e.nombre}"></div>`:'';
   $("#modal").innerHTML = `
     <div class="modal-head" style="background:linear-gradient(120deg,${e.hex},${shade(e.hex)})">
@@ -645,6 +674,8 @@ function abrirModal(id){
       ${timeline}
       ${p.avances?`<div class="sec"><h4>Avances logrados</h4><ul>${p.avances.map(a=>`<li>${a}</li>`).join("")}</ul></div>`:''}
       ${p.proximos?`<div class="sec"><h4>Próximos pasos</h4><ul>${p.proximos.map(a=>`<li>${a}</li>`).join("")}</ul></div>`:''}
+      ${metodologia}
+      ${reglas}
       ${sistemas}
       ${equipos}
       ${p.nota?`<div class="sec"><div class="notebox">ℹ️ ${p.nota}</div></div>`:''}
