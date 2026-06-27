@@ -326,7 +326,7 @@ const EMPRESAS = {
 
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
-  "Concurso de IA: bases lanzadas, 21 equipos inscritos y 36 participantes de Chesa, Calzamoda y CaFi.",
+  "Concurso de IA: bases lanzadas, 24 equipos inscritos y 40 participantes de Chesa, Calzamoda y CaFi.",
   "Onboarding Blunk: definida la metodología de integración ágil en 5 etapas; va en la Etapa 1 (Levantamiento y Alcance) con su primer cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
   "Chesa: 3 proyectos de mejora continua en marcha (2 en progreso, 1 en planeación).",
@@ -345,7 +345,7 @@ const PROYECTOS = [
     descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
     avances:[
       "✅ Bases del concurso publicadas y difundidas.",
-      "✅ 21 equipos inscritos, con 36 colaboradores participando.",
+      "✅ 24 equipos inscritos, con 40 colaboradores participando.",
       "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
       "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
     ],
@@ -357,7 +357,7 @@ const PROYECTOS = [
     link:"https://reto-ia.prosur.com.mx/",
     etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
     currentStage:1,
-    inscritos:21,
+    inscritos:24,
     equipos:[
       {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
       {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
@@ -380,6 +380,9 @@ const PROYECTOS = [
       {nombre:"Talento Humano", empresa:"Grupo Chesa", area:"RRHH", integrantes:"María Elizabeth Ovalle Islas · Alejandra Jocabeth Gordillo Morales · Fátima Penélope Pérez Cerón", problema:"La reserva de la Sala de Capacitación se gestiona de forma manual (mensajes entre colaboradores), lo que provoca duplicidad de apartados, falta de visibilidad de disponibilidad y pérdida de tiempo; busca verificar disponibilidad, registrar reservas y confirmar horarios automáticamente.", fecha:"26 jun"},
       {nombre:"IA Corporativa", empresa:"Grupo Chesa", area:"Innovación", integrantes:"Iván Esaú Nájera López · Armando Renato Ruiz Gómez", problema:"Centralización de documentos.", fecha:"27 jun"},
       {nombre:"IVA Corporativa", empresa:"Grupo Chesa", area:"Innovación", integrantes:"Iván Esaú Nájera López · Armando Renato Ruiz Gómez · Víctor Hugo Liévano Pérez", problema:"Digitalización de expedientes, seguimiento y cobro de garantías.", fecha:"27 jun"},
+      {nombre:"Los chicos que lloran", empresa:"Grupo Chesa", area:"Análisis de Datos", integrantes:"Iván Esaú Nájera López · Brandon Humberto Nepomuceno Cruz · Susana Elizabeth Santiz Vázquez · José Armando Pinacho López · Luis Gustavo Santiago Bonifaz", problema:"Ante el inicio del uso de herramientas de IA, establecer un proceso formal de anonimización y encriptación de información sensible para fortalecer la ciberseguridad y garantizar un uso seguro y responsable de estas tecnologías.", fecha:"27 jun"},
+      {nombre:"Los chicos que ya lloraron", empresa:"Grupo Chesa", area:"Análisis de Datos", integrantes:"Iván Esaú Nájera López · Brandon Humberto Nepomuceno Cruz · Susana Elizabeth Santiz Vázquez · José Armando Pinacho López · Luis Gustavo Santiago Bonifaz", problema:"Las políticas internas y los datos corporativos están dispersos y desorganizados; busca estructurarlos, organizarlos y centralizarlos para mejorar su gestión, consulta y aprovechamiento.", fecha:"27 jun"},
+      {nombre:"Los chicos que van a llorar", empresa:"Grupo Chesa", area:"Análisis de Datos", integrantes:"Iván Esaú Nájera López · Brandon Humberto Nepomuceno Cruz · Susana Elizabeth Santiz Vázquez · José Armando Pinacho López · Luis Gustavo Santiago Bonifaz", problema:"Grupo Chesa no tiene un seguimiento formal de la recuperación por oferta comercial de NISSAN, lo que ha generado montos pendientes; busca estructurar la información y asegurar la recuperación completa de esos incentivos.", fecha:"27 jun"},
     ],
   },
   {
@@ -635,7 +638,7 @@ function abrirModal(id){
   if(p.equipos){
     const nE=new Set(p.equipos.map(t=>t.empresa)).size;
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
-      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>36</b></div></div>
+      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>40</b></div></div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
       </tbody></table></div></div>`;
