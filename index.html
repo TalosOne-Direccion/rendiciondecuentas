@@ -307,7 +307,7 @@
    real de cada proyecto (confirmada). Flujo de etapas:
    plan (Planeación) → prog (En progreso) → rev (En revisión) → done (Completado)
    ===================================================================== */
-const ULTIMA_ACTUALIZACION = "26 de junio de 2026";
+const ULTIMA_ACTUALIZACION = "27 de junio de 2026";
 
 const FLUJO = ["plan","prog","rev","done"];
 const ESTATUS = {
@@ -326,7 +326,7 @@ const EMPRESAS = {
 
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
-  "Concurso de IA: bases lanzadas, 16 equipos inscritos y 29 participantes de Chesa, Calzamoda y CaFi.",
+  "Concurso de IA: bases lanzadas, 21 equipos inscritos y 36 participantes de Chesa, Calzamoda y CaFi.",
   "Onboarding Blunk: pasa a ejecución; en elaboración el Project Charter del nuevo modelo SaaS (IA, SAT, OCR y firma electrónica), detonado por su primer gran cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
   "Chesa: 3 proyectos de mejora continua en marcha (2 en progreso, 1 en planeación).",
@@ -341,11 +341,11 @@ const PROYECTOS = [
     empresa:"prosur",
     estatus:"prog",
     etapa:"Inscripciones abiertas",
-    actualizado:"26 jun 2026",
+    actualizado:"27 jun 2026",
     descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
     avances:[
       "✅ Bases del concurso publicadas y difundidas.",
-      "✅ 16 equipos inscritos, con 29 colaboradores participando.",
+      "✅ 21 equipos inscritos, con 36 colaboradores participando.",
       "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
       "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
     ],
@@ -357,13 +357,13 @@ const PROYECTOS = [
     link:"https://reto-ia.prosur.com.mx/",
     etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
     currentStage:1,
-    inscritos:16,
+    inscritos:21,
     equipos:[
       {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
       {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
       {nombre:"Los que perdieron", empresa:"Grupo Chesa", area:"Marketing", integrantes:"Marlon Octavio Giles García · Giovanni Trejo Matías", problema:"Clientes olvidan sus servicios y ponen en riesgo la garantía.", fecha:"17 jun"},
       {nombre:"Procesos", empresa:"Calzamoda", area:"Auditoría y Procesos", integrantes:"Diego López Guzmán", problema:"Planeación de compras manual en Río Vinyl (Microsip), ~4 hrs por ciclo. Proyecto: Resurtido_compras_rv.", fecha:"18 jun"},
-      {nombre:"T-800", empresa:"CaFi", area:"Marketing", integrantes:"Oswaldo Rafael Hernández Rodríguez", problema:"Asignación manual de leads; con alto volumen supera las 4 hrs.", fecha:"19 jun"},
+      {nombre:"T-800", empresa:"CaFi", area:"Marketing", integrantes:"Oswaldo Rafael Hernández Rodríguez", problema:"Asignación manual de leads desde el CRM Kommo a Excel; con alto volumen supera las 4 hrs. Propone automatizar (Kommo + Google Sheets + IA de Eleven Labs vía n8n/make) el 100% de la asignación y un primer contacto por IA fuera de horario.", fecha:"24 jun"},
       {nombre:"El ingeniero", empresa:"Calzamoda", area:"Sub Gerencia", integrantes:"Equipo de 6 colaboradores", problema:"Venta sugestiva y atención por mensajería manual; bot de venta sugestiva.", fecha:"19 jun"},
       {nombre:"RefaBot Team", empresa:"Grupo Chesa", area:"Refacciones", integrantes:"Carlos de Jesús Camacho Sánchez", problema:"Sin seguimiento en WhatsApp de solicitudes de insumos (Changan/Renault); cuellos de botella.", fecha:"21 jun"},
       {nombre:"G&amp;A", empresa:"CaFi", area:"Administración Grupal", integrantes:"Karina Suárez Álvarez · Juan Gonzalo Cruz López · Rigoberto Iván Maldonado Ramos · Mario Arturo López Gómez", problema:"Agilizar la renovación de créditos grupales optimizando los tiempos de sincronización, autorización y desembolso, para que el cliente reciba la disposición de su crédito el mismo día de la solicitud.", fecha:"23 jun"},
@@ -375,6 +375,11 @@ const PROYECTOS = [
       {nombre:"La santa conciliación", empresa:"CaFi", area:"Contabilidad", integrantes:"Elizabeth Carpio", problema:"Conciliación de los viáticos pagados con la tarjeta corporativa CLARA; hoy genera demoras en los estados financieros, retrabajos en el registro y pérdida de tiempo en el seguimiento con cada tarjetahabiente.", fecha:"26 jun"},
       {nombre:"El Señor de los arrendamientos", empresa:"CaFi", area:"Contabilidad", integrantes:"Vicente Jiménez", problema:"Mejorar la carátula financiera conforme a la NIF D-5, controlando la depreciación de los arrendamientos puros en el activo fijo; evita observaciones de autoridades, fondeadores y casas calificadoras.", fecha:"26 jun"},
       {nombre:"El oráculo corporativo", empresa:"CaFi", area:"Mejora continua", integrantes:"Laura Villafuerte · Erika Camacho", problema:"Hay manuales, políticas y leyes aplicables, pero no en un repositorio de consulta que garantice que están actualizados ni con gestión por IA para consultas rápidas.", fecha:"26 jun"},
+      {nombre:"Apex GP", empresa:"Grupo Chesa", area:"Capacitación", integrantes:"José Iván Mayorga Ruiz · Alejandra Jocabeth Gordillo Morales · María Elizabeth Ovalle Islas", problema:"Capacitación batalla para recopilar información de múltiples fuentes, validarla, analizarla y sintetizarla; el volumen de datos técnicos, comerciales y operativos eleva los tiempos de desarrollo de materiales, dificulta mantenerlos actualizados y afecta la estandarización del conocimiento.", fecha:"26 jun"},
+      {nombre:"Tu Guardián CaFi", empresa:"CaFi", area:"Prevención de fraudes", integrantes:"Claudia Fabiola Morales Gordillo · Guadalupe Alejandra Bermúdez Abarca", problema:"El análisis de crédito depende de revisiones manuales para validar documentos y detectar fraudes, lo que limita la eficiencia y genera variabilidad. Proponen el primer asistente inteligente de Prevención de Fraudes con IA y OCR para automatizar la validación documental, detectar señales de riesgo y apoyar al analista en tiempo real.", fecha:"26 jun"},
+      {nombre:"Talento Humano", empresa:"Grupo Chesa", area:"RRHH", integrantes:"María Elizabeth Ovalle Islas · Alejandra Jocabeth Gordillo Morales · Fátima Penélope Pérez Cerón", problema:"La reserva de la Sala de Capacitación se gestiona de forma manual (mensajes entre colaboradores), lo que provoca duplicidad de apartados, falta de visibilidad de disponibilidad y pérdida de tiempo; busca verificar disponibilidad, registrar reservas y confirmar horarios automáticamente.", fecha:"26 jun"},
+      {nombre:"IA Corporativa", empresa:"Grupo Chesa", area:"Innovación", integrantes:"Iván Esaú Nájera López · Armando Renato Ruiz Gómez", problema:"Centralización de documentos.", fecha:"27 jun"},
+      {nombre:"IVA Corporativa", empresa:"Grupo Chesa", area:"Innovación", integrantes:"Iván Esaú Nájera López · Armando Renato Ruiz Gómez · Víctor Hugo Liévano Pérez", problema:"Digitalización de expedientes, seguimiento y cobro de garantías.", fecha:"27 jun"},
     ],
   },
   {
@@ -614,7 +619,7 @@ function abrirModal(id){
   if(p.equipos){
     const nE=new Set(p.equipos.map(t=>t.empresa)).size;
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
-      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>29</b></div></div>
+      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores<b>36</b></div></div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
       </tbody></table></div></div>`;
