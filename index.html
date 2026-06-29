@@ -307,7 +307,7 @@
    real de cada proyecto (confirmada). Flujo de etapas:
    plan (Planeación) → prog (En progreso) → rev (En revisión) → done (Completado)
    ===================================================================== */
-const ULTIMA_ACTUALIZACION = "27 de junio de 2026";
+const ULTIMA_ACTUALIZACION = "29 de junio de 2026";
 
 const FLUJO = ["plan","prog","rev","done"];
 const ESTATUS = {
@@ -326,7 +326,7 @@ const EMPRESAS = {
 
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
-  "Concurso de IA: bases lanzadas, 24 equipos inscritos y 40 participantes de Chesa, Calzamoda y CaFi.",
+  "Concurso de IA: bases lanzadas, 26 equipos inscritos y 47 participantes de Chesa, Calzamoda, CaFi y otras.",
   "Onboarding Blunk: definida la metodología de integración ágil en 5 etapas; va en la Etapa 1 (Levantamiento y Alcance) con su primer cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
   "Chesa: 3 proyectos de mejora continua en marcha (2 en progreso, 1 en planeación).",
@@ -341,11 +341,11 @@ const PROYECTOS = [
     empresa:"prosur",
     estatus:"prog",
     etapa:"Inscripciones abiertas",
-    actualizado:"27 jun 2026",
+    actualizado:"29 jun 2026",
     descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
     avances:[
       "✅ Bases del concurso publicadas y difundidas.",
-      "✅ 24 equipos inscritos, con 40 colaboradores participando.",
+      "✅ 26 equipos inscritos, con 47 colaboradores participando.",
       "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
       "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
     ],
@@ -357,7 +357,7 @@ const PROYECTOS = [
     link:"https://reto-ia.prosur.com.mx/",
     etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
     currentStage:1,
-    inscritos:24,
+    inscritos:26,
     equipos:[
       {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
       {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
@@ -383,6 +383,8 @@ const PROYECTOS = [
       {nombre:"Los chicos que lloran", empresa:"Grupo Chesa", area:"Análisis de Datos", integrantes:"Iván Esaú Nájera López · Brandon Humberto Nepomuceno Cruz · Susana Elizabeth Santiz Vázquez · José Armando Pinacho López · Luis Gustavo Santiago Bonifaz", problema:"Ante el inicio del uso de herramientas de IA, establecer un proceso formal de anonimización y encriptación de información sensible para fortalecer la ciberseguridad y garantizar un uso seguro y responsable de estas tecnologías.", fecha:"27 jun"},
       {nombre:"Los chicos que ya lloraron", empresa:"Grupo Chesa", area:"Análisis de Datos", integrantes:"Iván Esaú Nájera López · Brandon Humberto Nepomuceno Cruz · Susana Elizabeth Santiz Vázquez · José Armando Pinacho López · Luis Gustavo Santiago Bonifaz", problema:"Las políticas internas y los datos corporativos están dispersos y desorganizados; busca estructurarlos, organizarlos y centralizarlos para mejorar su gestión, consulta y aprovechamiento.", fecha:"27 jun"},
       {nombre:"Los chicos que van a llorar", empresa:"Grupo Chesa", area:"Análisis de Datos", integrantes:"Iván Esaú Nájera López · Brandon Humberto Nepomuceno Cruz · Susana Elizabeth Santiz Vázquez · José Armando Pinacho López · Luis Gustavo Santiago Bonifaz", problema:"Grupo Chesa no tiene un seguimiento formal de la recuperación por oferta comercial de NISSAN, lo que ha generado montos pendientes; busca estructurar la información y asegurar la recuperación completa de esos incentivos.", fecha:"27 jun"},
+      {nombre:"Enlace inteligente", empresa:"CaFi", area:"Riesgos", integrantes:"Luis Fernando Trujillo Gerardo · Esteban Sánchez Huerta · Linett Anahí Pimentel Castro", problema:"La información operativa clave vive dispersa en Excel de distintas áreas, con estructuras y nombres distintos; la falta de homologación retrasa los análisis de Riesgos, multiplica el trabajo manual, aumenta errores y dificulta saber qué dato es confiable para decidir.", fecha:"29 jun"},
+      {nombre:"El Var del sándwich", empresa:"Otra", area:"Operación", integrantes:"Luis Eugenio López Nájera · Jared Adín López Cueto · Uri Orlando Mazariegos Guillén · Jonathan de Jesús Penagos Espinoza", problema:"Captura manual de inventarios en formatos diversos, pedidos inexactos y seguimiento manual de caducidades; genera tiempos prolongados en pedido e inventario y riesgo de desabastos o sobreinventarios.", fecha:"29 jun"},
     ],
   },
   {
@@ -638,7 +640,7 @@ function abrirModal(id){
   if(p.equipos){
     const nE=new Set(p.equipos.map(t=>t.empresa)).size;
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
-      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores únicos<b>40</b></div></div>
+      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores únicos<b>47</b></div></div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
       </tbody></table></div></div>`;
