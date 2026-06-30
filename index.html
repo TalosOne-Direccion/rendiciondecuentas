@@ -307,7 +307,7 @@
    real de cada proyecto (confirmada). Flujo de etapas:
    plan (Planeación) → prog (En progreso) → rev (En revisión) → done (Completado)
    ===================================================================== */
-const ULTIMA_ACTUALIZACION = "29 de junio de 2026";
+const ULTIMA_ACTUALIZACION = "30 de junio de 2026";
 
 const FLUJO = ["plan","prog","rev","done"];
 const ESTATUS = {
@@ -326,7 +326,7 @@ const EMPRESAS = {
 
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
-  "Concurso de IA: bases lanzadas, 26 equipos inscritos y 47 participantes de Chesa, Calzamoda, CaFi y otras.",
+  "Concurso de IA: bases lanzadas, 31 equipos inscritos y 54 participantes de Chesa, Calzamoda, CaFi y otras.",
   "Onboarding Blunk: definida la metodología de integración ágil en 5 etapas; va en la Etapa 1 (Levantamiento y Alcance) con su primer cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
   "Chesa: 3 proyectos de mejora continua en marcha (2 en progreso, 1 en planeación).",
@@ -341,11 +341,11 @@ const PROYECTOS = [
     empresa:"prosur",
     estatus:"prog",
     etapa:"Inscripciones abiertas",
-    actualizado:"29 jun 2026",
+    actualizado:"30 jun 2026",
     descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
     avances:[
       "✅ Bases del concurso publicadas y difundidas.",
-      "✅ 26 equipos inscritos, con 47 colaboradores participando.",
+      "✅ 31 equipos inscritos, con 54 colaboradores participando.",
       "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
       "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
     ],
@@ -357,7 +357,7 @@ const PROYECTOS = [
     link:"https://reto-ia.prosur.com.mx/",
     etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
     currentStage:1,
-    inscritos:26,
+    inscritos:31,
     equipos:[
       {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
       {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
@@ -369,7 +369,7 @@ const PROYECTOS = [
       {nombre:"G&amp;A", empresa:"CaFi", area:"Administración Grupal", integrantes:"Karina Suárez Álvarez · Juan Gonzalo Cruz López · Rigoberto Iván Maldonado Ramos · Mario Arturo López Gómez", problema:"Agilizar la renovación de créditos grupales optimizando los tiempos de sincronización, autorización y desembolso, para que el cliente reciba la disposición de su crédito el mismo día de la solicitud.", fecha:"23 jun"},
       {nombre:"OpTeam", empresa:"Grupo Chesa", area:"Ventas de Flotas", integrantes:"Fernando de Jesús Mora Saldaña", problema:"Clasificar y dar seguimiento óptimo a los clientes —desde los que no compraron al inicio por falta de seguimiento, hasta los que no se atienden a tiempo por estar viajando, prospectando o atendiendo a otro cliente.", fecha:"24 jun"},
       {nombre:"TalentIA 360", empresa:"Grupo Chesa", area:"Talento Humano", integrantes:"María Elizabeth Ovalle Islas · Alejandra Jocabeth Gordillo Morales", problema:"Talento Humano gestiona 800+ colaboradores en 16 agencias con 4 Excel desconectados y carga manual a Power BI; cada reporte tarda 5-8 días, con datos contradictorios y sin visibilidad en tiempo real de reclutamiento, rotación y polígrafo.", fecha:"24 jun"},
-      {nombre:"Impulso Inteligente", empresa:"Grupo Chesa", area:"BDC", integrantes:"Ángel Francisco Liévano Trejo", problema:"En el BDC se maneja información de varias fuentes (DMS, CRM, PROSUR, SIMA) por agencia y 3 marcas, cada una con formato distinto; hoy se depura, homologa y clasifica registro por registro de forma manual. Buscan consolidarla y clasificarla automáticamente; primera fase: Posventa BDC.", fecha:"25 jun"},
+      {nombre:"Impulso Inteligente", empresa:"Grupo Chesa", area:"BDC", integrantes:"Ángel Francisco Liévano Trejo", problema:"Proyecto PULSO BDC Servicio: hoy se descargan y homologan manualmente reportes de varias fuentes (DMS, CRM, PROSUR, SIMA) por agencia y 3 marcas, clasificando registro por registro (~12 horas-persona/semana) con errores y datos que envejecen. Buscan un tablero que reciba los Excel, detecte el tipo de reporte, estandarice y consolide por VIN, y clasifique citas/órdenes al instante.", fecha:"27 jun"},
       {nombre:"Smart Norm", empresa:"Grupo Chesa", area:"Talento Humano", integrantes:"Gibran Hashmed García Cruz · Laura Jovanna Trujillo Solórzano", problema:"20+ agencias y 600+ colaboradores generan 50,000+ puntos de datos al mes (4 checadas diarias). Analizar renglón por renglón para detectar incumplimientos de jornada de forma manual es inviable para 2 responsables.", fecha:"25 jun"},
       {nombre:"La patrulla del chip perdido", empresa:"CaFi", area:"Administración", integrantes:"Stephanie Hernández · César Flores", problema:"Control de líneas celulares: asignación de consumo mensual por centro de costos, identificación de líneas vs. usuarios y descuentos vía nómina por el gasto celular.", fecha:"26 jun"},
       {nombre:"La santa conciliación", empresa:"CaFi", area:"Contabilidad", integrantes:"Elizabeth Carpio", problema:"Conciliación de los viáticos pagados con la tarjeta corporativa CLARA; hoy genera demoras en los estados financieros, retrabajos en el registro y pérdida de tiempo en el seguimiento con cada tarjetahabiente.", fecha:"26 jun"},
@@ -385,6 +385,11 @@ const PROYECTOS = [
       {nombre:"Los chicos que van a llorar", empresa:"Grupo Chesa", area:"Análisis de Datos", integrantes:"Iván Esaú Nájera López · Brandon Humberto Nepomuceno Cruz · Susana Elizabeth Santiz Vázquez · José Armando Pinacho López · Luis Gustavo Santiago Bonifaz", problema:"Grupo Chesa no tiene un seguimiento formal de la recuperación por oferta comercial de NISSAN, lo que ha generado montos pendientes; busca estructurar la información y asegurar la recuperación completa de esos incentivos.", fecha:"27 jun"},
       {nombre:"Enlace inteligente", empresa:"CaFi", area:"Riesgos", integrantes:"Luis Fernando Trujillo Gerardo · Esteban Sánchez Huerta · Linett Anahí Pimentel Castro", problema:"La información operativa clave vive dispersa en Excel de distintas áreas, con estructuras y nombres distintos; la falta de homologación retrasa los análisis de Riesgos, multiplica el trabajo manual, aumenta errores y dificulta saber qué dato es confiable para decidir.", fecha:"29 jun"},
       {nombre:"El Var del sándwich", empresa:"Otra", area:"Operación", integrantes:"Luis Eugenio López Nájera · Jared Adín López Cueto · Uri Orlando Mazariegos Guillén · Jonathan de Jesús Penagos Espinoza", problema:"Captura manual de inventarios en formatos diversos, pedidos inexactos y seguimiento manual de caducidades; genera tiempos prolongados en pedido e inventario y riesgo de desabastos o sobreinventarios.", fecha:"29 jun"},
+      {nombre:"La cazatraspasos", empresa:"CaFi", area:"Contabilidad", integrantes:"Nayely del Carmen Bautista Ramírez", problema:"Mejorar el tiempo de registro de traspasos entre cuentas (~25 al día): optimizar la captura, ahorrar recursos y mitigar errores.", fecha:"29 jun"},
+      {nombre:"TEAM AMOS", empresa:"CaFi", area:"Operativa / Comercial", integrantes:"Angelina Asunción Díaz Hernández · Montserrat Sandoval Zepeda · Oswaldo Rafael Hernández Rodríguez · Mayra Berenice Montoya García", problema:"El contacto al cliente para la renovación de seguros es tardado; con IA se busca notificar al cliente la autorización de la renovación de pólizas en un tiempo mucho más eficaz.", fecha:"29 jun"},
+      {nombre:"Chesa tu Nissan", empresa:"Grupo Chesa", area:"Posventa", integrantes:"Guadalupe del Carmen Solórzano García", problema:"En el diagnóstico no siempre hay datos precisos de la falla: el cliente describe por percepción ('hace ruido') y, al indagar el APS en recepción, se extiende el tiempo de atención y se generan filas, retrasos e insatisfacción.", fecha:"29 jun"},
+      {nombre:"AI", empresa:"Grupo Chesa", area:"Mantenimiento", integrantes:"Ricardo Castilleja Delgado", problema:"Reloj checador desfasado (hasta 1.5 hrs/mes por colaborador), actividades de bitácora repetitivas con horarios poco realistas, y áreas de oportunidad en la revisión nocturna de unidades; propone sincronización NTP, asistente de IA para auditorías y escáner de daños por visión por computadora.", fecha:"30 jun"},
+      {nombre:"NIRAM", empresa:"Grupo Chesa", area:"Contabilidad", integrantes:"Ángel Marín Ruiz Ruiz", problema:"Generar automáticamente las notas de cargo, ya que el sistema interno no tiene una opción para ello.", fecha:"30 jun"},
     ],
   },
   {
@@ -640,7 +645,7 @@ function abrirModal(id){
   if(p.equipos){
     const nE=new Set(p.equipos.map(t=>t.empresa)).size;
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
-      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores únicos<b>47</b></div></div>
+      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores únicos<b>54</b></div></div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
       </tbody></table></div></div>`;
