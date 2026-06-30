@@ -207,6 +207,12 @@
   .ecount{display:flex;gap:14px;margin-bottom:12px;flex-wrap:wrap}
   .ecount .e{background:#f6f8fc;border-radius:10px;padding:8px 14px;font-size:12px;color:var(--ink-soft)}
   .ecount .e b{display:block;font-size:18px;color:var(--ink);margin-top:2px}
+  .ecomp-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  .ecomp-row .lbl{font-size:12px;color:var(--ink-soft);font-weight:600;margin-right:2px}
+  .ecomp{display:inline-flex;align-items:center;gap:7px;background:#f6f8fc;border:1px solid var(--line);
+    border-radius:999px;padding:4px 11px;font-size:12.5px;color:#2b3447;font-weight:600}
+  .ecomp .cdot{width:8px;height:8px;border-radius:50%}
+  .ecomp b{color:var(--ink);font-weight:800}
   .notebox{background:#fff8e6;border:1px solid #f3e2b3;border-radius:10px;padding:10px 13px;font-size:12.5px;color:#7a5b12}
   .btn-link{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;text-decoration:none;
     padding:9px 15px;border-radius:9px;font-size:13px;font-weight:600}
@@ -644,8 +650,14 @@ function abrirModal(id){
   let equipos="";
   if(p.equipos){
     const nE=new Set(p.equipos.map(t=>t.empresa)).size;
+    const colorEmp = n => /chesa/i.test(n)?'#0891b2' : /calzamoda/i.test(n)?'#be185d' : /cafi|cefi/i.test(n)?'#c2410c' : /prosur/i.test(n)?'#e1251b' : /pinos/i.test(n)?'#15803d' : '#94a3b8';
+    const porEmpresa = {};
+    p.equipos.forEach(t=>{ porEmpresa[t.empresa]=(porEmpresa[t.empresa]||0)+1; });
+    const breakdown = Object.entries(porEmpresa).sort((a,b)=>b[1]-a[1])
+      .map(([emp,n])=>`<span class="ecomp"><span class="cdot" style="background:${colorEmp(emp)}"></span><b>${n}</b> ${emp}</span>`).join("");
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
       <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores únicos<b>54</b></div></div>
+      <div class="ecomp-row"><span class="lbl">Inscritos por empresa:</span>${breakdown}</div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
       </tbody></table></div></div>`;
