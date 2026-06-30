@@ -332,7 +332,7 @@ const EMPRESAS = {
 
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
-  "Concurso de IA: bases lanzadas, 31 equipos inscritos y 54 participantes de Chesa, Calzamoda, CaFi y otras.",
+  "Concurso de IA: bases lanzadas, 39 equipos inscritos y 69 participantes de Prosur, Chesa, Calzamoda, CaFi, 5 Pinos y otras.",
   "Onboarding Blunk: definida la metodología de integración ágil en 5 etapas; va en la Etapa 1 (Levantamiento y Alcance) con su primer cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
   "Chesa: 3 proyectos de mejora continua en marcha (2 en progreso, 1 en planeación).",
@@ -351,7 +351,7 @@ const PROYECTOS = [
     descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
     avances:[
       "✅ Bases del concurso publicadas y difundidas.",
-      "✅ 31 equipos inscritos, con 54 colaboradores participando.",
+      "✅ 39 equipos inscritos, con 69 colaboradores participando.",
       "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
       "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
     ],
@@ -363,7 +363,7 @@ const PROYECTOS = [
     link:"https://reto-ia.prosur.com.mx/",
     etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
     currentStage:1,
-    inscritos:31,
+    inscritos:39,
     equipos:[
       {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
       {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
@@ -396,6 +396,14 @@ const PROYECTOS = [
       {nombre:"Chesa tu Nissan", empresa:"Grupo Chesa", area:"Posventa", integrantes:"Guadalupe del Carmen Solórzano García", problema:"En el diagnóstico no siempre hay datos precisos de la falla: el cliente describe por percepción ('hace ruido') y, al indagar el APS en recepción, se extiende el tiempo de atención y se generan filas, retrasos e insatisfacción.", fecha:"29 jun"},
       {nombre:"AI", empresa:"Grupo Chesa", area:"Mantenimiento", integrantes:"Ricardo Castilleja Delgado", problema:"Reloj checador desfasado (hasta 1.5 hrs/mes por colaborador), actividades de bitácora repetitivas con horarios poco realistas, y áreas de oportunidad en la revisión nocturna de unidades; propone sincronización NTP, asistente de IA para auditorías y escáner de daños por visión por computadora.", fecha:"30 jun"},
       {nombre:"NIRAM", empresa:"Grupo Chesa", area:"Contabilidad", integrantes:"Ángel Marín Ruiz Ruiz", problema:"Generar automáticamente las notas de cargo, ya que el sistema interno no tiene una opción para ello.", fecha:"30 jun"},
+      {nombre:"Reclutapower", empresa:"CaFi", area:"Talento Humano", integrantes:"Felipe de Jesús Paniagua Ruiz · Jazmín Garduza Luna · Cinthya Velázquez Pérez · Richard Alonso Natarén Chacón", problema:"El seguimiento de vacantes y candidatos depende de Excel con actualización manual; el 50% de los candidatos tiene estatus desactualizado, lo que impide detectar a tiempo inactivos, abandonos, vacantes en riesgo de cobertura, las fuentes de reclutamiento más efectivas y la productividad del equipo.", fecha:"30 jun"},
+      {nombre:"OPERACIONES", empresa:"CaFi", area:"Operaciones", integrantes:"Luis Enrique Santos Enríquez · Melecio Antonio Ruiz del Carpio", problema:"Monitoreo, gestión y seguimiento de rutas del equipo de cobranza y comercial; planificar rutas eficientes según la cartera activa con mora y las visitas a agencias del equipo comercial.", fecha:"30 jun"},
+      {nombre:"OPERACIONES", empresa:"CaFi", area:"Operaciones", integrantes:"Luis Enrique Santos Enríquez · Melecio Antonio Ruiz del Carpio", problema:"Logística, control y seguimiento a las rutas del equipo de cobranza y comercial; rutas efectivas con clientes de la cartera activa y aprovechar el tiempo con visitas a agencias del equipo comercial.", fecha:"30 jun"},
+      {nombre:"Victor Flores Casas", empresa:"5 Pinos", area:"Finanzas y Proyectos Estratégicos", integrantes:"Víctor Flores Casas", problema:"Proyección financiera de la construcción y renta de un centro de distribución.", fecha:"30 jun"},
+      {nombre:"Synergy", empresa:"5 Pinos", area:"Construcción", integrantes:"Mario Alberto Hernández Solís", problema:"Usar un asistente de IA (Claude Cowork) para automatizar tareas del área eléctrica: organizar carpetas de proyectos, dar seguimiento a entregables, verificar normativa (NOM-001-SEDE, CFE), recalcular cuadros de carga, conductores y caídas de tensión, generar cronogramas y comparar cotizaciones.", fecha:"30 jun"},
+      {nombre:"Talento IA", empresa:"Grupo Prosur", area:"Recursos Humanos", integrantes:"Yasmín Mijangos Zepeda · José Marín Flores Gómez", problema:"Reclutamiento con un gran volumen de CVs por revisar.", fecha:"30 jun"},
+      {nombre:"Cobranza", empresa:"CaFi", area:"Cobranza", integrantes:"Teresa Gómez Ruiz · Guadalupe Vázquez Maldonado · Martha de Jesús Gonzáles Hernández · Quebin Brallan Trujillo Domínguez", problema:"Identificar los pagos realizados en el banco (BANAMEX): el estado de cuenta no se puede integrar a un sistema, por lo que el equipo tarda de 15 a 50 minutos por corte; al ser repetitivo, cualquier retraso afecta a otras áreas.", fecha:"30 jun"},
+      {nombre:"Foresight Innovation", empresa:"Grupo Chesa", area:"Gerencia General", integrantes:"Francisco Javier García Solís", problema:"La información estratégica de las agencias está dispersa en múltiples reportes y fuentes; los gerentes invierten mucho tiempo recopilando e interpretando indicadores antes de decidir, lo que dificulta detectar a tiempo desviaciones, riesgos y oportunidades.", fecha:"30 jun"},
     ],
   },
   {
@@ -656,7 +664,7 @@ function abrirModal(id){
     const breakdown = Object.entries(porEmpresa).sort((a,b)=>b[1]-a[1])
       .map(([emp,n])=>`<span class="ecomp"><span class="cdot" style="background:${colorEmp(emp)}"></span><b>${n}</b> ${emp}</span>`).join("");
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
-      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores únicos<b>54</b></div></div>
+      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores únicos<b>69</b></div></div>
       <div class="ecomp-row"><span class="lbl">Inscritos por empresa:</span>${breakdown}</div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
