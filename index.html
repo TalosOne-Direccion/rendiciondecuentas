@@ -332,7 +332,7 @@ const EMPRESAS = {
 
 /* Lo "Destacado" del Resumen Ejecutivo (hechos reales, no estimaciones) */
 const DESTACADO = [
-  "Concurso de IA: bases lanzadas, 39 equipos inscritos y 69 participantes de Prosur, Chesa, Calzamoda, CaFi, 5 Pinos y otras.",
+  "Concurso de IA: bases lanzadas, 40 equipos inscritos y 71 participantes de Prosur, Chesa, Calzamoda, CaFi, 5 Pinos y otras.",
   "Onboarding Blunk: definida la metodología de integración ágil en 5 etapas; va en la Etapa 1 (Levantamiento y Alcance) con su primer cliente, Grupo Mena.",
   "Compilado de Sistemas: levantamiento iniciado en Chesa (RH, Contabilidad y Sistemas).",
   "Chesa: 3 proyectos de mejora continua en marcha (2 en progreso, 1 en planeación).",
@@ -351,7 +351,7 @@ const PROYECTOS = [
     descripcion:"Concurso interno para que colaboradores de todas las empresas del grupo propongan y desarrollen soluciones con Inteligencia Artificial a problemas reales de su área. Las bases ya se publicaron y el periodo de inscripción está activo.",
     avances:[
       "✅ Bases del concurso publicadas y difundidas.",
-      "✅ 39 equipos inscritos, con 69 colaboradores participando.",
+      "✅ 40 equipos inscritos, con 71 colaboradores participando.",
       "✅ Página oficial del reto en línea: reto-ia.prosur.com.mx",
       "✅ Participan 3 empresas del grupo: Chesa, Calzamoda y CaFi.",
     ],
@@ -363,7 +363,7 @@ const PROYECTOS = [
     link:"https://reto-ia.prosur.com.mx/",
     etapas:["Bases / Lanzamiento","Inscripciones","Desarrollo","Evaluación","Premiación"],
     currentStage:1,
-    inscritos:39,
+    inscritos:40,
     equipos:[
       {nombre:"TORQUE LEAD IA 🤖", empresa:"Grupo Chesa", area:"Ventas (APV)", integrantes:"Yahir Iván López Gómez", problema:"Prospección, seguimiento y cierre de ventas.", fecha:"17 jun"},
       {nombre:"Lead Pilot", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Valeria Carolina Contreras Gómez", problema:"Lentitud y poca objetividad en la atención digital y perfilamiento de clientes.", fecha:"17 jun"},
@@ -404,6 +404,7 @@ const PROYECTOS = [
       {nombre:"Talento IA", empresa:"Grupo Prosur", area:"Recursos Humanos", integrantes:"Yasmín Mijangos Zepeda · José Marín Flores Gómez", problema:"Reclutamiento con un gran volumen de CVs por revisar.", fecha:"30 jun"},
       {nombre:"Cobranza", empresa:"CaFi", area:"Cobranza", integrantes:"Teresa Gómez Ruiz · Guadalupe Vázquez Maldonado · Martha de Jesús Gonzáles Hernández · Quebin Brallan Trujillo Domínguez", problema:"Identificar los pagos realizados en el banco (BANAMEX): el estado de cuenta no se puede integrar a un sistema, por lo que el equipo tarda de 15 a 50 minutos por corte; al ser repetitivo, cualquier retraso afecta a otras áreas.", fecha:"30 jun"},
       {nombre:"Foresight Innovation", empresa:"Grupo Chesa", area:"Gerencia General", integrantes:"Francisco Javier García Solís", problema:"La información estratégica de las agencias está dispersa en múltiples reportes y fuentes; los gerentes invierten mucho tiempo recopilando e interpretando indicadores antes de decidir, lo que dificulta detectar a tiempo desviaciones, riesgos y oportunidades.", fecha:"30 jun"},
+      {nombre:"IA conec", empresa:"Grupo Chesa", area:"Ventas", integrantes:"Erick Jhovanny Zebadúa Cerda · Ibis Vélez Morales", problema:"En ventas se redactan desde cero los mensajes de WhatsApp a cada prospecto, se clasifica a mano a ~200 contactos (frío/tibio/caliente), se arma contenido de redes y se recalculan enganches/mensualidades una y otra vez; los prospectos se enfrían por falta de seguimiento oportuno. Proponen un asistente de IA que clasifica prospectos y genera mensajes personalizados por modelo y etapa de venta, con recordatorios y un panel de a quién contactar hoy.", fecha:"30 jun"},
     ],
   },
   {
@@ -664,7 +665,7 @@ function abrirModal(id){
     const breakdown = Object.entries(porEmpresa).sort((a,b)=>b[1]-a[1])
       .map(([emp,n])=>`<span class="ecomp"><span class="cdot" style="background:${colorEmp(emp)}"></span><b>${n}</b> ${emp}</span>`).join("");
     equipos=`<div class="sec"><h4>Equipos inscritos</h4>
-      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores únicos<b>69</b></div></div>
+      <div class="ecount"><div class="e">Equipos inscritos<b>${p.inscritos||p.equipos.length}</b></div><div class="e">Empresas participantes<b>${nE}</b></div><div class="e">Colaboradores únicos<b>71</b></div></div>
       <div class="ecomp-row"><span class="lbl">Inscritos por empresa:</span>${breakdown}</div>
       <div class="tbl-wrap"><table class="teams"><thead><tr><th>Equipo</th><th>Empresa</th><th>Área</th><th>Integrantes</th><th>Reto que resuelven</th><th>Inscrito</th></tr></thead><tbody>
       ${p.equipos.map(t=>`<tr><td class="tname">${t.nombre}</td><td>${t.empresa}</td><td>${t.area}</td><td>${t.integrantes}</td><td>${t.problema}</td><td>${t.fecha}</td></tr>`).join("")}
